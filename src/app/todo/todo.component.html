@@ -3,7 +3,7 @@
     <div class="col-sm-6">
 
       <h2 class="text-center">Todo App</h2>
-      <form>
+      <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)" ngForm>
         <div>
           <label>todo:</label>
           <input type="text">

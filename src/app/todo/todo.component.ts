@@ -26,6 +26,10 @@ export class TodoComponent {
       complete: false
     }];
 
+  onSubmit(todoForm) {
+    console.log(todoForm);
+  }
+
   constructor() {
   }
 
