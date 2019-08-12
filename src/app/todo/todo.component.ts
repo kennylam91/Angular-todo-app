@@ -15,12 +15,15 @@ export class TodoComponent implements OnInit {
   todo: ITodo;
 
   create(value: string): void {
-    this.todo = {
-      title: value,
-      complete: false
-    };
-    this.todoService.create(this.todo);
+    if (this.todoForm.valid) {
+      this.todo = {
+        title: value,
+        complete: false
+      };
+      this.todoService.create(this.todo);
+    }
   }
+
 
   constructor(private formBuilder: FormBuilder, private todoService: TodoService) {
   }

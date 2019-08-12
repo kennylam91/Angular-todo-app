@@ -6,8 +6,11 @@
       <form [formGroup]="todoForm" (ngSubmit)="create(todoForm.controls.title.value)">
         <div>
           <label>Title:
-          <input type="text" formControlName="title"> {{todoForm.value}}
+          <input [class.is-invalid]="todoForm.invalid" type="text" formControlName="title">
           </label>
+          <div *ngIf="todoForm.invalid && (todoForm.controls.title.touched||todoForm.controls.title.dirty)">
+            <p>Title required</p>
+          </div>
         </div>
         <div>
           <button type="submit">Submit</button>
