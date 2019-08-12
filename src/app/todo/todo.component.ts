@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-
-interface ITodo {
-  id: number;
-  content: string;
-  complete: boolean;
-}
+import {FormBuilder, FormsModule, FormGroup, Validators} from '@angular/forms';
+import {ITodo} from './Todo';
+import {TodoService} from './todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -12,25 +9,29 @@ interface ITodo {
   styleUrls: ['./todo.component.scss']
 })
 
-export class TodoComponent {
-  todos: Array<ITodo> = [
-    {
-      id: 1,
-      content: 'doing',
-      complete: false
+export class TodoComponent implements OnInit {
+  todos: ITodo[];
+  todoForm: FormGroup;
+  todo: ITodo;
 
-    },
-    {
-      id: 2,
-      content: 'playing',
+  create(value: string): void {
+    this.todo = {
+      title: value,
       complete: false
-    }];
-
-  onSubmit(todoForm) {
-    console.log(todoForm);
+    };
+    this.todoService.create(this.todo);
   }
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder, private todoService: TodoService) {
   }
+
+  ngOnInit(): void {
+    this.todoForm = this.formBuilder.group({
+      title: ['', Validators.required]
+    });
+    this.todos = this.todoService.todoList;
+    console.log(this.todos);
+  }
+
 
 }
