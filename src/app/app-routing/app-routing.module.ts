@@ -8,11 +8,9 @@ import {PageNotFoundComponent} from '../page-not-found/page-not-found.component'
 
 const routes: Routes = [
   {
-    path: 'todos', component: TodoListComponent,
-    children: [{
-      path: 'title', component: TodoDetailComponent
-    }]
+    path: 'todos', component: TodoListComponent
   },
+  {path: 'todo/:title', component: TodoDetailComponent},
   {path: '', redirectTo: '/todos', pathMatch: 'full'},
   {path: '**', component: PageNotFoundComponent},
 ];

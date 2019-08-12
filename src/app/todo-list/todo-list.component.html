@@ -1,8 +1,7 @@
-<div><p>todo-list works!</p>
-
+<div>
   <ul>
     <li *ngFor="let todo of todos">
-      <a>{{todo.title}}</a>
+      <a [routerLink]="['/todo', todo.title]" routerLinkActive="active">{{todo.title}}</a>
     </li>
   </ul>
 </div>
