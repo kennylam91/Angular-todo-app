@@ -8,13 +8,15 @@ import {TodoDetailComponent} from './todo-detail/todo-detail.component';
 import {TodoListComponent} from './todo-list/todo-list.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {RouterModule} from '@angular/router';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TodoComponent,
     TodoDetailComponent,
-    TodoListComponent
+    TodoListComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
